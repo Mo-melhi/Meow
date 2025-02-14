@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Envelope + Letter (Open/Close on Click)</title>
-    <link rel="stylesheet" href="./proj.css">
+    <title>My Website</title>
+    <link rel="stylesheet" href="proj.css">
     <style>
         body {
             background-color: #8d1362; /* Change this to your desired background color */
@@ -82,121 +81,13 @@
             <div class="envelope">
                 <div class="letter">
                     <div class="text">
-                        <strong>Dear Fatoom.</strong>
-                        <p>
-                           Will you be my valentine? 
-                        </p>
-                        <button id="yesButton">Yes</button>
-                        <button id="noButton">No</button>
+                        <p>Your content here...</p>
+                        <button>Click Me</button>
                     </div>
-                    
                 </div>
             </div>
             <div class="heart"></div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const envelope = document.querySelector('.envelope-wrapper');
-            envelope.addEventListener('click', () => {
-                envelope.classList.add('flap');
-            });
-
-            const yesButton = document.getElementById('yesButton');
-            const noButton = document.getElementById('noButton');
-            noButton.addEventListener('click', () => {
-                const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-                yesButton.style.fontSize = (currentSize * 1.05) + 'px';
-            });
-
-            yesButton.addEventListener('click', () => {
-                document.body.style.transition = 'opacity 1s';
-                document.body.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.innerHTML = `
-                        <div class="yay-box">
-                            <img src="4.jpg" alt="4 Image">
-                            <div>Yay! Thx so much <3</div>
-                        </div>
-                        <button class="dissolve-button" id="dissolveButton">Bonus gifts</button>`;
-                    document.body.style.opacity = '1';
-
-                    const dissolveButton = document.getElementById('dissolveButton');
-                    dissolveButton.addEventListener('click', () => {
-                        document.body.style.transition = 'opacity 1s';
-                        document.body.style.opacity = '0';
-                        setTimeout(() => {
-                            document.body.innerHTML = '<button class="more-gifts-button" id="moreGiftsButton">Click for more gifts</button>';
-                            document.body.style.opacity = '1';
-
-                            const moreGiftsButton = document.getElementById('moreGiftsButton');
-                            moreGiftsButton.addEventListener('click', () => {
-                                moreGiftsButton.classList.add('move-to-top');
-                                let img = document.createElement('img');
-                                img.src = '7.jpg';
-                                img.alt = 'More Gifts Image';
-                                img.className = 'more-gifts-image';
-                                document.body.appendChild(img);
-
-                                moreGiftsButton.addEventListener('click', () => {
-                                    img.remove(); // Remove the old image
-                                    img = document.createElement('img');
-                                    img.src = '6.jpg'; // Change to another image
-                                    img.alt = 'Another Gifts Image';
-                                    img.className = 'more-gifts-image';
-                                    document.body.appendChild(img);
-
-                                    moreGiftsButton.addEventListener('click', () => {
-                                        img.remove(); // Remove the old image
-                                        img = document.createElement('img');
-                                        img.src = '5.jpg'; // Change to a new image
-                                        img.alt = 'New Gifts Image';
-                                        img.className = 'more-gifts-image';
-                                        document.body.appendChild(img);
-
-                                        moreGiftsButton.addEventListener('click', () => {
-                                            img.remove(); // Remove the old image
-                                            img = document.createElement('img');
-                                            img.src = '3.jpg'; // Change to another new image
-                                            img.alt = 'Another New Gifts Image';
-                                            img.className = 'more-gifts-image';
-                                            document.body.appendChild(img);
-
-                                            moreGiftsButton.addEventListener('click', () => {
-                                                img.remove(); // Remove the old image
-                                                img = document.createElement('img');
-                                                img.src = '2.jpg'; // Change to another new image
-                                                img.alt = 'Another New Gifts Image';
-                                                img.className = 'more-gifts-image';
-                                                document.body.appendChild(img);
-
-                                                moreGiftsButton.addEventListener('click', () => {
-                                                    img.remove(); // Remove the old image
-                                                    img = document.createElement('img');
-                                                    img.src = '1.jpg'; // Change to the last image
-                                                    img.alt = 'Last Gifts Image';
-                                                    img.className = 'more-gifts-image';
-                                                    document.body.appendChild(img);
-
-                                                    moreGiftsButton.addEventListener('click', () => {
-                                                        document.body.style.transition = 'opacity 1s';
-                                                        document.body.style.opacity = '0';
-                                                        setTimeout(() => {
-                                                            document.body.innerHTML = '<img src="9.png" alt="Center Image" class="center-image">';
-                                                            document.body.style.opacity = '1';
-                                                        }, 1000);
-                                                    });
-                                                });
-                                            });
-                                        });
-                                    });
-                                });
-                            });
-                        }, 1000);
-                    });
-                }, 1000);
-            });
-        });
-    </script>
 </body>
 </html>
