@@ -10,6 +10,16 @@
         body {
             background-color: #8d1362; /* Change this to your desired background color */
         }
+        .raise-volume {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            z-index: 10;
+        }
         .yay-box {
             display: flex;
             flex-direction: column;
@@ -182,7 +192,13 @@
                                                         document.body.style.transition = 'opacity 1s';
                                                         document.body.style.opacity = '0';
                                                         setTimeout(() => {
-                                                            document.body.innerHTML = '<img src="9.png" alt="Center Image" class="center-image">';
+                                                            document.body.innerHTML = `
+                                                                <div class="raise-volume">Raise up the volume :)</div>
+                                                                <img src="9.png" alt="Center Image" class="center-image">
+                                                                <audio id="backgroundMusic" autoplay>
+                                                                    <source src="10.mp3" type="audio/mpeg">
+                                                                    Your browser does not support the audio element.
+                                                                </audio>`;
                                                             document.body.style.opacity = '1';
                                                         }, 1000);
                                                     });
