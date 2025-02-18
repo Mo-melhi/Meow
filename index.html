@@ -9,6 +9,11 @@
     <style>
         body {
             background-color: #8d1362; /* Change this to your desired background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
         .raise-volume {
             position: absolute;
@@ -84,10 +89,33 @@
             max-width: 50%;
             max-height: 50%;
         }
+        .password-prompt {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .password-prompt input {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+        .password-prompt button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="password-prompt" id="passwordPrompt">
+        <h1>Enter Password</h1>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button id="submitPassword">Submit</button>
+    </div>
+    <div class="container" id="mainContent" style="display: none;">
         <div class="envelope-wrapper">
             <div class="envelope">
                 <div class="letter">
@@ -107,6 +135,21 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const presetPassword = 'FatMoha312'; // Set your preset password here
+            const passwordPrompt = document.getElementById('passwordPrompt');
+            const mainContent = document.getElementById('mainContent');
+            const submitPassword = document.getElementById('submitPassword');
+            const passwordInput = document.getElementById('passwordInput');
+
+            submitPassword.addEventListener('click', () => {
+                if (passwordInput.value === presetPassword) {
+                    passwordPrompt.style.display = 'none';
+                    mainContent.style.display = 'flex';
+                } else {
+                    alert('Nah thats wrong this wasnt made for u');
+                }
+            });
+
             const envelope = document.querySelector('.envelope-wrapper');
             envelope.addEventListener('click', () => {
                 envelope.classList.add('flap');
